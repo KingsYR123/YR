@@ -1,0 +1,568 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  background: radial-gradient(
+    circle,
+    rgba(14, 19, 55, 1) 67%,
+    rgba(16, 3, 37, 1) 89%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 28, 83, 1) 3%,
+    rgba(95, 39, 90, 1) 70%,
+    rgba(135, 31, 65, 1) 98%
+  );
+  box-shadow: 0 50px 40px rgba(0, 0, 0, 0.3), 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.hill1 {
+  position: absolute;
+  top: 51%;
+  left: -15%;
+  width: 200px;
+  height: 200px;
+  background: rgb(36, 32, 74);
+  background: linear-gradient(
+    196deg,
+    rgba(36, 32, 74, 1) 57%,
+    rgba(46, 10, 54, 1) 100%
+  );
+  transform: rotate(45deg);
+}
+.hill2 {
+  position: absolute;
+  top: 62%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    350deg,
+    rgba(35, 28, 93, 1) 43%,
+    rgba(87, 50, 95, 1) 79%
+  );
+  transform: rotate(45deg);
+}
+.hill3 {
+  position: absolute;
+  top: 51%;
+  left: 69%;
+  width: 200px;
+  height: 200px;
+  background: rgb(36, 32, 74);
+  background: linear-gradient(
+    196deg,
+    rgba(36, 32, 74, 1) 57%,
+    rgba(46, 10, 54, 1) 100%
+  );
+  transform: rotate(45deg);
+}
+.chimney {
+  position: absolute;
+  width: 5px;
+  height: 20px;
+  top: 61%;
+  left: 63%;
+  background: linear-gradient(to right, #c02425, #f0cb35);
+}
+.chimney2 {
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  top: 61%;
+  left: 62.6%;
+  background: linear-gradient(to right, #ff512f, #f09819);
+}
+.hut {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(to right, #f12711, #f5af19);
+  top: 64%;
+  left: 57.3%;
+}
+.roof {
+  position: absolute;
+  border-bottom: 5px solid #fd1d1d;
+  width: 40px;
+  height: 25px;
+  top: 61%;
+  left: 56%;
+  background: linear-gradient(to bottom, #c21500, #ffc500);
+  clip-path: polygon(50% 0%, 0 80%, 100% 81%);
+}
+.land {
+  position: absolute;
+  top: 67%;
+  left: 0;
+  width: 400px;
+  height: 300px;
+  background: linear-gradient(
+    180deg,
+    rgba(43, 38, 95, 1) 43%,
+    rgba(83, 33, 94, 1) 79%
+  );
+}
+.bush1 {
+  position: absolute;
+  width: 9px;
+  height: 26px;
+  top: 62.8%;
+  left: 73%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush2 {
+  position: absolute;
+  width: 7px;
+  height: 20px;
+  top: 64%;
+  left: 77%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush3 {
+  position: absolute;
+  width: 7px;
+  height: 26px;
+  top: 79%;
+  left: 91%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush4 {
+  position: absolute;
+  width: 7px;
+  height: 20px;
+  top: 80%;
+  left: 88%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush5 {
+  position: absolute;
+  width: 7px;
+  height: 26px;
+  top: 66%;
+  left: 12%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush6 {
+  position: absolute;
+  width: 7px;
+  height: 20px;
+  top: 67%;
+  left: 15%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush7 {
+  position: absolute;
+  width: 7px;
+  height: 26px;
+  top: 82%;
+  left: 33%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush8 {
+  position: absolute;
+  width: 7px;
+  height: 20px;
+  top: 83%;
+  left: 36%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush9 {
+  position: absolute;
+  width: 7px;
+  height: 20px;
+  top: 83%;
+  left: 30%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush10 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 90%;
+  left: -1%;
+  border-radius: 100%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush11 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 93%;
+  left: 8%;
+  border-radius: 100%;
+  background: linear-gradient(
+    350deg,
+    rgba(48, 43, 93, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush12 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 93%;
+  left: 84%;
+  border-radius: 100%;
+  background: linear-gradient(
+    350deg,
+    rgba(79, 73, 129, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.bush13 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 96%;
+  left: 80%;
+  border-radius: 100%;
+  background: linear-gradient(
+    350deg,
+    rgba(48, 43, 93, 0.9697012594100141) 43%,
+    rgba(87, 50, 95, 0.9416900549282213) 79%
+  );
+}
+.disc1 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 10%;
+  left: 35%;
+  border-radius: 100%;
+  background: white;
+  opacity: 0.1;
+}
+.disc2 {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 13.3%;
+  left: 40%;
+  border-radius: 100%;
+  background: white;
+  opacity: 0.1;
+}
+.disc3 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 16%;
+  left: 44%;
+  border-radius: 100%;
+  background: white;
+  opacity: 0.2;
+}
+.disc4 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20%;
+  left: 50%;
+  border-radius: 100%;
+  background: white;
+}
+.star1 {
+  background: white;
+  width: 150px;
+  height: 13px;
+  position: absolute;
+  top: 30%;
+  left: -8%;
+  opacity: 0.1;
+  animation: glow infinite 2s;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  border-radius: 10px;
+}
+.star2 {
+  background: white;
+  width: 100px;
+  height: 13px;
+  position: absolute;
+  top: 6%;
+  left: 80%;
+  opacity: 0.1;
+  border-radius: 10px;
+}
+.star3 {
+  background: white;
+  width: 70px;
+  height: 13px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  opacity: 0.1;
+  border-radius: 10px;
+}
+.star4 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 250ms;
+}
+.star5 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 750ms;
+}
+.star6 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 900ms;
+}
+.star7 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 1s;
+}
+.star8 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 40%;
+  left: 8%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+}
+.star9 {
+  background: white;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 4%;
+  left: 28%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 500ms;
+}
+.star10 {
+  background: white;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 25%;
+  left: 98%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-delay: 660ms;
+}
+.star11 {
+  background: white;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  left: 68%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation-name: glowing-stars;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+#smoke {
+  position: absolute;
+  z-index: 3;
+  width: 1px;
+  height: 160px;
+  left: 63%;
+  top: 33%;
+}
+#smoke span {
+  display: block;
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  margin-left: -20px;
+  height: 0px;
+  width: 0px;
+  border: 35px solid #4b4b4b;
+  border-radius: 35px;
+  left: -14px;
+  opacity: 0;
+  transform: scale(0.2);
+}
+@keyframes smokeL {
+  0% {
+    transform: scale(0.2) translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(0.2) translate(0, -5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translate(-20px, -130px);
+  }
+}
+
+@keyframes smokeR {
+  0% {
+    transform: scale(0.2) translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(0.2) translate(0, -5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2) translate(20px, -130px);
+  }
+}
+
+#smoke .s0 {
+  animation: smokeL 10s 0s infinite;
+}
+#smoke .s1 {
+  animation: smokeR 10s 1s infinite;
+}
+#smoke .s2 {
+  animation: smokeL 10s 2s infinite;
+}
+#smoke .s3 {
+  animation: smokeR 10s 3s infinite;
+}
+#smoke .s4 {
+  animation: smokeL 10s 4s infinite;
+}
+#smoke .s5 {
+  animation: smokeR 10s 5s infinite;
+}
+#smoke .s6 {
+  animation: smokeL 10s 6s infinite;
+}
+#smoke .s7 {
+  animation: smokeR 10s 7s infinite;
+}
+#smoke .s8 {
+  animation: smokeL 10s 8s infinite;
+}
+#smoke .s9 {
+  animation: smokeR 10s 9s infinite;
+}
+
+@keyframes glowing-stars {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

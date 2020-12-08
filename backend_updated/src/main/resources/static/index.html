@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>2048</title>
+	<!-- 兼容性配置 -->
+	<meta name="renderer" content="webkit"> <!-- 360手机优先使用chrome内核 -->
+	<meta name="screen-orientation" content="portrait"> <!-- UC强制竖屏 -->
+	<meta name="x5-orientation" content="portrait"> <!-- QQ强制竖屏 -->
+	<meta name="browsermode" content="application"> <!-- UC浏览器应用模式 -->
+	<meta http-equiv="Cache-Control" content="no-siteapp"> <!-- 禁止百度转载页面加载流氓广告 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 优先使用最高IE内核和chrome内核 -->
+	<meta name="viewport" content="width-device,user-scalable=no"> <!-- 禁止用户修改网页大小 -->
+	<meta name="google" value="notranslate"> <!-- 禁用google翻译网页 -->
+	<meta name="robots" content="index,follow"> <!-- 网页搜索引擎方式 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- CSS样式调用 -->
+	<link href="css/2048.css" rel="stylesheet">
+	<link href="css/Three_Parts.css" rel="stylesheet">
+	<link href="css/Moon.css" rel="stylesheet">
+	<!--<EMBED
+		src=http://www.kugou.com/song-36/m9w81e5.html?from_360#hash=FDB37D4193A0FC8D165C3ED6A07D9E4B&album_id=14506808
+		width=0 height=0 type=audio/mpeg loop="1" autostart="true" volume="0"></EMBED>-->
+	<!--	<audio src="bgm/bgm.mp3" width=0 height=0  loop="loop" autostart="true" >
+			</audio>-->
+	<audio autoplay="autopaly" loop="loop" id="audios">
+		<source src="bgm/bgm.mp3" type="audio/mp3" />
+	</audio>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+</head>
+
+<body>
+	<div class="all_parts">
+
+		<!-- 顶部title -->
+		<div class="left_part">
+
+			<!-- 左上角分数盒子 -->
+			<div class="score_box">
+				<b>score:</b><b id="score"></b>
+			</div>
+
+			<!-- 重置排行榜，相关选项放在这里面，按钮样式之后重置 -->
+			<div class="ranking_box">
+				<div class="ranking_head">排行榜</div>
+				<div class="ranking_content">
+					<div class="ranking_items">
+						<div id="rank_1" class="ranking_rank"></div>
+						<div id="rankName_1" class="ranking_name"></div>
+						<div id="rankScore_1" class="ranking_score"></div>
+					</div>
+					<div class="ranking_items">
+						<div id="rank_2" class="ranking_rank"></div>
+						<div id="rankName_2" class="ranking_name"></div>
+						<div id="rankScore_2" class="ranking_score"></div>
+					</div>
+					<button class="btn" id="button-cell-1" type="button"
+						onclick="javascript:RestartFun();">重新开始</button>
+					<button class="btn" id="button-cell-1" type="button">单人模式</button>
+					<button class="btn" id="button-cell-1" type="button">双人匹配</button>
+				</div>
+			</div>
+
+			<!-- 建议放一个消息栏 -->
+			<div class="news_box">
+				<div class="news">
+
+				</div>
+			</div>
+		</div>
+
+
+		<style>
+			*{padding: 0;margin: 0;}
+			body{
+				background:#f5e9d1;
+				width: 100%;
+				height: 100%;
+				overflow:hidden;
+			}
+		</style>
+
+		<!-- 2048游戏区 -->
+		<!-- 这里其实有一个游戏区大小适配的问题 -->
+		<div class="center_part">
+			<div class="cell_wrap">
+				<div class="box">
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 对手格子，拓展区 -->
+		<div class="right_part">
+			<!-- 兔子动画 -->
+			<div class="circle">
+				<div class="moon"></div>
+				<div class="moon2"></div>
+				<div class="crater1"></div>
+				<div class="crater2"></div>
+				<div class="crater3"></div>
+				<div class="land1"></div>
+				<div class="land2"></div>
+				<div class="land3"></div>
+				<div class="land4"></div>
+				<div class="shadow"></div>
+				<div class="rabbit"></div>
+				<div class="ear1"></div>
+				<div class="ear2"></div>
+				<div class="tail"></div>
+				<div class="cloud1"></div>
+				<div class="cloud2"></div>
+				<div class="cloud3"></div>
+				<div class="cloud4"></div>
+			</div>
+
+			<!-- 对手视图 -->
+			<div class="cell_wrap2">
+				<div class="box2">
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+					<div class="cell2"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/2048.js"></script>
+	<script src="js/Server.js"></script>
+	<script>
+		// 页面监听接口
+		document.addEventListener('WeixinJSBridgeReady', function() {
+			document.getElementById('audios').play()
+		})
+		 
+		</script>
+	<script>
+	
+
+		function Obj(){}  //创建一个对象
+		
+		/*为这个对象添加一个具有一个参数的原型方法*/
+		Obj.prototype.draw=function(o){
+			var speed=0;   //雪花每次下落的数值（10px）
+			var startPosLeft=Math.ceil(Math.random()*document.documentElement.clientWidth);//设置雪花随机的开始x值的大小
+			o.style.opacity=(Math.ceil(Math.random()*3)+7)/10;  //设置透明度
+			o.style.left=startPosLeft+'px'; 
+			o.style.color="#c18479";
+			o.style.fontSize=12+Math.ceil(Math.random()*14)+'px';
+			setInterval(function(){
+				//雪花下落的top值小鱼屏幕的可视区域高时执行下列
+				if(speed<document.documentElement.clientHeight){
+					o.style.top=speed+'px';
+					o.style.left=startPosLeft+Math.ceil(Math.random()*8)+'px';
+					speed+=10;
+				}
+				else{
+					o.style.display='none';
+				}
+			},400);
+		}
+		
+		var flame=document.getElementById('flame');
+		
+		/*使用setInterval定时器每800毫秒创建一个雪花*/
+		setInterval(function(){
+			var odiv=document.createElement('div');  //创建div
+			odiv.innerHTML="✽";   //div的内容
+			odiv.style.position='absolute';  //div的绝对定位
+			flame.appendChild(odiv);   //把创建好的div放进flame中
+			var obj=new Obj();   //创建函数
+			obj.draw(odiv);  //执行obj的draw方法
+		},800);  
+		
+	</script>
+</body>
+
+</html>
+<!--
+//加排行榜
+-->
